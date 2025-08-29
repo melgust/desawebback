@@ -166,3 +166,4 @@
 /home/melgust/Documents/U/2-2025/web/diario/HelloApi/obj/Debug/net8.0/HelloApi.csproj.AssemblyReference.cache
 /home/melgust/Documents/U/2-2025/web/diario/HelloApi/obj/Debug/net8.0/HelloApi.MvcApplicationPartsAssemblyInfo.cs
 /home/melgust/Documents/U/2-2025/web/diario/HelloApi/obj/Debug/net8.0/HelloApi.csproj.Up2Date
+/home/melgust/Documents/U/2-2025/web/diario/HelloApi/obj/Debug/net8.0/HelloApi.sourcelink.json
