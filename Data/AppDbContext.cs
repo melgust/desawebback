@@ -12,6 +12,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Client> Clients => Set<Client>();
     public DbSet<Invoice> Invoices => Set<Invoice>();
     public DbSet<Detail> Details => Set<Detail>();
+    public DbSet<Order> Orders => Set<Order>();
+    public DbSet<OrderDetail> OrderDetails => Set<OrderDetail>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,6 +31,21 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         .HasMany(t => t.Details)
         .WithOne(t => t.Product)
         .HasForeignKey(t => t.ProductId);
+
+        modelBuilder.Entity<Order>()
+        .HasMany(t => t.OrderDetails)
+        .WithOne(t => t.Order)
+        .HasForeignKey(t => t.OrderId);
+
+        modelBuilder.Entity<Item>()
+        .HasMany(t => t.OrderDetails)
+        .WithOne(t => t.Item)
+        .HasForeignKey(t => t.ItemId);
+
+        modelBuilder.Entity<Person>()
+        .HasMany(t => t.Orders)
+        .WithOne(t => t.Person)
+        .HasForeignKey(t => t.PersonId);
 
     }
     
