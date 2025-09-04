@@ -1,6 +1,7 @@
-namespace MessageApi.Models.DTOs;
-
-public class MessageCreateDto
+namespace HelloApi.Models.DTOs
 {
-    public string Message { get; set; } = string.Empty;
+    public class MessageCreateDto
+    {
+        public string Message { get; set; } = string.Empty;
+    }
 }
