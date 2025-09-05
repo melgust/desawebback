@@ -11,9 +11,12 @@ namespace HelloApi.Repositories
 
         public async Task<User?> GetUserWithRoleAsync(string username, string password)
         {
-            return await _context.Users
+            var user = await _context.Users
                 .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
+                .FirstOrDefaultAsync(u => u.Username == username);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
+                return null;
+            return user;
         }
 
         /// <summary>

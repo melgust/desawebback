@@ -19,5 +19,16 @@ namespace HelloApi.Controllers
 
             return Ok(response);
         }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
+        {
+            var result = await _authService.RegisterAsync(request);
+            if (result == null)
+                return BadRequest("Username already exists or role is invalid");
+
+            return Ok(new { message = result });
+        }
+    
     }
 }

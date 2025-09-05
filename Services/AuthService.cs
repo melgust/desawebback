@@ -17,15 +17,18 @@ namespace HelloApi.Services
 
         public async Task<LoginResponseDto?> AuthenticateAsync(LoginRequestDto request)
         {
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            var user = await _userRepository.GetUserWithRoleAsync(request.Username, hashedPassword);
+            var user = await _userRepository.GetUserWithRoleAsync(request.Username, request.Password);
             if (user == null)
                 return null;
-
             var token = GenerateJwtToken(user);
+            string roleName = "";
+            if (user.Role != null)
+            {
+                roleName = user.Role.Name;
+            } 
             RoleDto roleDto = new()
             {
-                Name = user.Role.Name
+                Name = roleName
             };
             return new LoginResponseDto
             {
@@ -63,10 +66,15 @@ namespace HelloApi.Services
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"] ?? "YourSuperSecretKey123!"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            string roleName = "";
+            if (user.Role != null)
+            {
+                roleName = user.Role.Name;
+            } 
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, user.Role.Name)
+                new Claim(ClaimTypes.Role, roleName)
             };
 
             var token = new JwtSecurityToken(
