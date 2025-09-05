@@ -14,6 +14,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Detail> Details => Set<Detail>();
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<OrderDetail> OrderDetails => Set<OrderDetail>();
+    public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -46,6 +48,22 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         .HasMany(t => t.Orders)
         .WithOne(t => t.Person)
         .HasForeignKey(t => t.PersonId);
+
+        modelBuilder.Entity<Role>()
+        .HasMany(t => t.Users)
+        .WithOne(t => t.Role)
+        .HasForeignKey(t => t.RoleId);
+
+        //seed tables to login        
+        modelBuilder.Entity<Role>().HasData(
+            new Role { Id = 1, Name = "Admin" },
+            new Role { Id = 2, Name = "User" }
+        );
+
+        modelBuilder.Entity<User>().HasData(
+            new User { Id = 1, Username = "admin@miumg.edu.gt", Password = "Admin123$#2025", RoleId = 1 },
+            new User { Id = 2, Username = "user@miumg.edu.gt", Password = "User123$#2025", RoleId = 2 }
+        );
 
     }
     
