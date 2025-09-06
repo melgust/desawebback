@@ -54,7 +54,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         .WithOne(t => t.Role)
         .HasForeignKey(t => t.RoleId);
 
-        //seed tables to login        
+            
         modelBuilder.Entity<Role>().HasData(
             new Role { Id = 1, Name = "Admin" },
             new Role { Id = 2, Name = "User" }

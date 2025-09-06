@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/melgust/Documents/U/2-2025/web/diario/HelloApi/HelloApi.csproj": {}
+    "C:\\DesarrolloWeb\\Laboratorio2\\OrdesPractica\\desawebback\\HelloApi.csproj": {}
   },
   "projects": {
-    "/home/melgust/Documents/U/2-2025/web/diario/HelloApi/HelloApi.csproj": {
+    "C:\\DesarrolloWeb\\Laboratorio2\\OrdesPractica\\desawebback\\HelloApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/melgust/Documents/U/2-2025/web/diario/HelloApi/HelloApi.csproj",
+        "projectUniqueName": "C:\\DesarrolloWeb\\Laboratorio2\\OrdesPractica\\desawebback\\HelloApi.csproj",
         "projectName": "HelloApi",
-        "projectPath": "/home/melgust/Documents/U/2-2025/web/diario/HelloApi/HelloApi.csproj",
-        "packagesPath": "/home/melgust/.nuget/packages/",
-        "outputPath": "/home/melgust/Documents/U/2-2025/web/diario/HelloApi/obj/",
+        "projectPath": "C:\\DesarrolloWeb\\Laboratorio2\\OrdesPractica\\desawebback\\HelloApi.csproj",
+        "packagesPath": "C:\\Users\\edrei\\.nuget\\packages\\",
+        "outputPath": "C:\\DesarrolloWeb\\Laboratorio2\\OrdesPractica\\desawebback\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/melgust/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\edrei\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -55,6 +55,12 @@
               "target": "Package",
               "version": "[9.0.8, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.8, )"
@@ -67,7 +73,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
@@ -89,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

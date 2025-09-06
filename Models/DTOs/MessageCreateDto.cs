@@ -1,4 +1,4 @@
-namespace HelloApi.Models.DTOs
+namespace MessageApi.Models.DTOs
 {
     public class MessageCreateDto
     {

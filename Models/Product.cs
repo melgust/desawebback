@@ -7,5 +7,6 @@ namespace HelloApi.Models
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public List<Detail> Details { get; set; } = [];
+        
     }
 }
