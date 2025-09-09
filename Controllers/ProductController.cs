@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using HelloApi.Models.DTOs;
-using HelloApi.Services;
+using HelloApi.Services.Interfaces;
 
 namespace HelloApi.Controllers
 {

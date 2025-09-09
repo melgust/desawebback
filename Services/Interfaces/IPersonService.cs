@@ -1,6 +1,6 @@
 using HelloApi.Models.DTOs;
 
-namespace HelloApi.Services
+namespace HelloApi.Services.Interfaces
 {
     public interface IPersonService
     {

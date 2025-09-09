@@ -2,7 +2,6 @@ using System.Text;
 using HelloApi.Repositories;
 using HelloApi.Services;
 using MessageApi.Data;
-using MessageApi.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -80,6 +79,9 @@ using (var scope = app.Services.CreateScope())
 app.UseCors("CorsPolicy");
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 app.Run();

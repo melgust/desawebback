@@ -1,5 +1,6 @@
 using HelloApi.Models;
 using HelloApi.Models.DTOs;
+using HelloApi.Repositories.Interfaces;
 using MessageApi.Data;
 using Microsoft.EntityFrameworkCore;
 

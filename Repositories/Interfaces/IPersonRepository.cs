@@ -1,7 +1,7 @@
 using HelloApi.Models;
 using HelloApi.Models.DTOs;
 
-namespace MessageApi.Repositories
+namespace HelloApi.Repositories.Interfaces
 {
     public interface IPersonRepository
     {

@@ -55,15 +55,15 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         .HasForeignKey(t => t.RoleId);
 
         //seed tables to login        
-        modelBuilder.Entity<Role>().HasData(
+        /*modelBuilder.Entity<Role>().HasData(
             new Role { Id = 1, Name = "Admin" },
             new Role { Id = 2, Name = "User" }
         );
 
         modelBuilder.Entity<User>().HasData(
-            new User { Id = 1, Username = "admin@miumg.edu.gt", Password = "Admin123$#2025", RoleId = 1 },
-            new User { Id = 2, Username = "user@miumg.edu.gt", Password = "User123$#2025", RoleId = 2 }
-        );
+            new User { Id = 1, Username = "admin@miumg.edu.gt", Password = BCrypt.Net.BCrypt.HashPassword("Admin123$#2025"), RoleId = 1 },
+            new User { Id = 2, Username = "user@miumg.edu.gt", Password = BCrypt.Net.BCrypt.HashPassword("User123$#2025"), RoleId = 2 }
+        );*/
 
     }
     

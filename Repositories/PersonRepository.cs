@@ -1,9 +1,10 @@
 using HelloApi.Models;
 using HelloApi.Models.DTOs;
+using HelloApi.Repositories.Interfaces;
 using MessageApi.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessageApi.Repositories
+namespace HelloApi.Repositories
 {
     public class PersonRepository(AppDbContext context) : IPersonRepository
     {

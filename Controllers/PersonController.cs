@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using HelloApi.Models.DTOs;
-using HelloApi.Services;
+using HelloApi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HelloApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class PersonController(IPersonService service) : ControllerBase
     {
         private readonly IPersonService _service = service;

@@ -4,7 +4,7 @@ namespace HelloApi.Models
     {
         public int Id { get; set; }
         public required int PersonId { get; set; }
-        public Person Person { get; set; }
+        public Person? Person { get; set; }
         public int Number { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -1,6 +1,7 @@
 using HelloApi.Models;
 using HelloApi.Models.DTOs;
-using HelloApi.Repositories;
+using HelloApi.Repositories.Interfaces;
+using HelloApi.Services.Interfaces;
 
 namespace HelloApi.Services
 {
