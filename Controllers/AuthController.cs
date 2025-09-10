@@ -25,7 +25,7 @@ namespace HelloApi.Controllers
         {
             var result = await _authService.RegisterAsync(request);
             if (result == null)
-                return BadRequest("Username already exists or role is invalid");
+                return BadRequest("El usuario ya se encuentra registro o el nombre del perfil no es correcto");
 
             return Ok(new { message = result });
         }

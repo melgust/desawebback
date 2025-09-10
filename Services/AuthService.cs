@@ -2,6 +2,7 @@ using HelloApi.Models;
 using HelloApi.Models.DTOs;
 using HelloApi.Repositories.Interfaces;
 using HelloApi.Services.Interfaces;
+using HelloApi.Utils;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -9,11 +10,13 @@ using System.Text;
 
 namespace HelloApi.Services
 {
-    public class AuthService(IUserRepository userRepository, IRoleRepository roleRepository, IConfiguration config) : IAuthService
+    public class AuthService(IUserRepository userRepository, IRoleRepository roleRepository,
+        IConfiguration config, CryptoHelper cryptoHelper) : IAuthService
     {
         private readonly IUserRepository _userRepository = userRepository;
         private readonly IConfiguration _config = config;
         private readonly IRoleRepository _roleRepository = roleRepository;
+        private readonly CryptoHelper _cryptoHelper = cryptoHelper;
 
         public async Task<LoginResponseDto?> AuthenticateAsync(LoginRequestDto request)
         {
@@ -25,7 +28,7 @@ namespace HelloApi.Services
             if (user.Role != null)
             {
                 roleName = user.Role.Name;
-            } 
+            }
             RoleDto roleDto = new()
             {
                 Name = roleName
@@ -57,7 +60,7 @@ namespace HelloApi.Services
             };
 
             await _userRepository.AddAsync(user);
-            return "User registered successfully.";
+            return "Usuario registrado correctamente.";
         }
 
         private string GenerateJwtToken(User user)
@@ -74,7 +77,8 @@ namespace HelloApi.Services
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, roleName)
+                new Claim(ClaimTypes.Role, roleName),
+                new Claim("Id", _cryptoHelper.Encrypt(user.Id.ToString()))
             };
 
             var token = new JwtSecurityToken(

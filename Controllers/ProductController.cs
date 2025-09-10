@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using HelloApi.Models.DTOs;
 using HelloApi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HelloApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ProductController(IProductService service) : ControllerBase
     {
         private readonly IProductService _service = service;

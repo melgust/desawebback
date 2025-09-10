@@ -7,12 +7,19 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using HelloApi.Repositories.Interfaces;
 using HelloApi.Services.Interfaces;
+using HelloApi.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton(provider =>
+{
+    string key = "62219311522870687600240042448129"; // 32 chars
+    string iv = "8458586964174710";                  // 16 chars
+    return new CryptoHelper(key, iv);
+});
 
 // EF Core + SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
