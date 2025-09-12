@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using MessageApi.Models.DTOs;
 using HelloApi.Models.DTOs;
 using HelloApi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HelloApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _service;
