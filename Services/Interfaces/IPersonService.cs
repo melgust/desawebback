@@ -4,7 +4,7 @@ namespace HelloApi.Services.Interfaces
 {
     public interface IPersonService
     {
-        Task<PersonReadDto> CreatePersonAsync(PersonCreateDto person);
+        Task<PersonReadDto> CreatePersonAsync(PersonCreateDto person, int userId);
         Task<IEnumerable<PersonReadDto>> GetAllPersonsAsync();
         Task<PersonReadDto?> GetPersonByIdAsync(int id);
         Task<PersonReadDto?> UpdatePersonAsync(int id, PersonUpdateDto person);

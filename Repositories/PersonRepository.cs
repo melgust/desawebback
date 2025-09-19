@@ -10,7 +10,7 @@ namespace HelloApi.Repositories
     {
         private readonly AppDbContext _context = context;
 
-        public async Task<Person> AddPersonAsync(PersonCreateDto person)
+        public async Task<Person> AddPersonAsync(PersonCreateDto person, int userId)
         {
             var entity = new Person
             {
@@ -18,7 +18,8 @@ namespace HelloApi.Repositories
                 LastName = person.LastName,
                 Email = person.Email,
                 CreatedAt = DateTime.UtcNow,
-                UpdatedAt = null
+                UpdatedAt = null,
+                CreatedBy = userId
             };
             _context.Persons.Add(entity);
             await _context.SaveChangesAsync();

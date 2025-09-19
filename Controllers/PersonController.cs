@@ -2,15 +2,17 @@ using Microsoft.AspNetCore.Mvc;
 using HelloApi.Models.DTOs;
 using HelloApi.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using HelloApi.Utils;
 
 namespace HelloApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
-    public class PersonController(IPersonService service) : ControllerBase
+    public class PersonController(IPersonService service, CryptoHelper cryptoHelper) : ControllerBase
     {
         private readonly IPersonService _service = service;
+        private readonly CryptoHelper _cryptoHelper = cryptoHelper;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -27,13 +29,18 @@ namespace HelloApi.Controllers
             return Ok(person);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] PersonCreateDto dto)
         {
-            var created = await _service.CreatePersonAsync(dto);
+            var strUserId = User.FindFirst("Id")?.Value;
+            strUserId ??= "0";
+            var userId = _cryptoHelper.Decrypt(strUserId);
+            var created = await _service.CreatePersonAsync(dto, int.Parse(userId));
             return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] PersonUpdateDto dto)
         {

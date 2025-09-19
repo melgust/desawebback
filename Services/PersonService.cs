@@ -9,9 +9,9 @@ namespace HelloApi.Services
     {
         private readonly IPersonRepository _repository = repository;
 
-        public async Task<PersonReadDto> CreatePersonAsync(PersonCreateDto person)
+        public async Task<PersonReadDto> CreatePersonAsync(PersonCreateDto person, int userId)
         {
-            var entity = await _repository.AddPersonAsync(person);
+            var entity = await _repository.AddPersonAsync(person, userId);
             return MapToReadDto(entity);
         }
 

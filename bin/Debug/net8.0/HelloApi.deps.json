@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "HelloApi/1.0.0": {
+      "HelloApi/1.1": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0",
@@ -1089,7 +1089,7 @@
     }
   },
   "libraries": {
-    "HelloApi/1.0.0": {
+    "HelloApi/1.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
