@@ -1,4 +1,29 @@
-# Ejemplo de backend con C-Sharp
+# Web API with C-Sharp Dotnet v8.0
+
+To create the project, run the following command in a terminal.
+
+```bash
+dotnet new webapi --name Nameproject -f net8.0
+```
+
+The following instructions are for creating the services in containers, namely the Backend, Frontend, and SQL Server 2022.
+
+First, you must have a folder with the following structure.
+
+```bash
+project
+    desaweb090
+    desawebback
+    docker-compose.yml
+    demoapps.conf
+```
+
+desaweb090 is the frontend
+desawebbacke is the backend
+
+```bash
+docker compose up --build
+```
 
 Connect via sqlcmd and run this script, change for your custom password
 
@@ -41,5 +66,8 @@ Now start the backend
 docker compose up -d
 ```
 
+Connect to container via shell
 
+```bash
 docker exec -it diario-backend /bin/bash
+```
